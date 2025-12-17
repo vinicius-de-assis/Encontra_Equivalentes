@@ -1,7 +1,7 @@
 const CONTATO = {
     instagram: 'https://www.instagram.com/portilla_gabrel/',
-    whatsapp: 'https://wa.me/5511999999999?text=Olá!%20Vim%20pela%20Calculadora%20de%20Equivalentes.%0A%0AGostaria%20de%20solicitar%20orientação%20nutricional%20para%20minha%20dieta.',
-    email: 'mailto:seuemail@exemplo.com?subject=Orientação%20Nutricional&body=Olá!%20Vim%20pela%20Calculadora%20de%20Equivalentes.%20Gostaria%20de%20solicitar%20orientação%20nutricional%20para%20minha%20dieta.'
+    whatsapp: 'https://wa.me/555184858987?text=Olá!%20Vim%20pela%20Calculadora%20de%20Equivalentes.%0A%0AGostaria%20de%20solicitar%20orientação%20nutricional%20para%20minha%20dieta.',
+    email: 'mailto:gabrielportilla3008@gmail.com?subject=Orientação%20Nutricional&body=Olá!%20Vim%20pela%20Calculadora%20de%20Equivalentes.%20Gostaria%20de%20solicitar%20orientação%20nutricional%20para%20minha%20dieta.'
 };
 
 const dados = {
