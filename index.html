@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Equivalentes Alimentares</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="title-container">
+                    <a href="javascript:void(0);" 
+                    onclick="window.open(CONTATO.instagram, '_blank', 'noopener,noreferrer')" 
+                    id="instagram-header"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="instagram-header-icon"
+                    title="Siga-nos no Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <h1>Calculadora de Equivalentes Alimentares</h1>
+                </div>
+                <p class="subtitle">Compare porções de alimentos com valores calóricos equivalentes</p>
+            </div>
+        </header>
+
+        <main>
+            <div class="card">
+                <h2><i class="fas fa-calculator"></i> Configurar Cálculo</h2>
+                
+                <div class="form-group">
+                    <label for="grupo">
+                        <i class="fas fa-layer-group"></i> Grupo Alimentar:
+                    </label>
+                    <select id="grupo" class="form-control">
+                        <option value="">Selecione um grupo...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="alimento">
+                        <i class="fas fa-utensils"></i> Alimento:
+                    </label>
+                    <select id="alimento" class="form-control" disabled>
+                        <option value="">Primeiro selecione um grupo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantidade">
+                        <i class="fas fa-weight"></i> Quantidade Consumida (gramas):
+                    </label>
+                    <div class="input-with-info">
+                        <input type="number" id="quantidade" class="form-control" 
+                               placeholder="Deixe em branco para usar porção padrão">
+                        <span class="info-tooltip">
+                            <i class="fas fa-info-circle"></i>
+                            <span class="tooltip-text">Deixe vazio para usar a porção padrão do alimento selecionado</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button id="calcular" class="btn-primary">
+                        <i class="fas fa-search"></i> Calcular Equivalentes
+                    </button>
+                    <button id="limpar" class="btn-secondary">
+                        <i class="fas fa-redo"></i> Limpar
+                    </button>
+                </div>
+            </div>
+
+            <div id="resultado" class="card resultado-container">
+                <h3><i class="fas fa-chart-bar"></i> Resultado</h3>
+                <div class="resultado-content">
+                    <p class="instrucao">Preencha os campos acima e clique em "Calcular Equivalentes"</p>
+                </div>
+            </div>
+
+            <div class="card info-card">
+                <h3><i class="fas fa-lightbulb"></i> Como Funciona?</h3>
+                <ul>
+                    <li>Selecione um grupo alimentar (ex: Frutas, Carnes, Pães)</li>
+                    <li>Escolha um alimento específico dentro desse grupo</li>
+                    <li>Informe a quantidade consumida (opcional - usa porção padrão se vazio)</li>
+                    <li>O sistema mostrará alimentos equivalentes em calorias</li>
+                </ul>
+                <p class="dica">
+                    <i class="fas fa-tip"></i> Dica: Use para planejar substituições em sua dieta!
+                </p>
+            </div>
+        </main>
+
+        <footer>
+            <p>Desenvolvido para auxiliar em cálculos nutricionais | 
+                <span id="grupos-count">0</span> grupos alimentares disponíveis</p>
+            
+            <div class="disclaimer-container">
+                <p class="disclaimer">
+                    <i class="fas fa-exclamation-triangle"></i> 
+                    Informações para referência nutricional. Para solicitar ajustes na sua dieta, 
+                    entre em contato:
+                </p>
+                
+                <div class="contato-links">
+                  <!-- Instagram -->
+                  <a href="javascript:void(0);" 
+                    onclick="window.open(CONTATO.instagram, '_blank', 'noopener,noreferrer')"
+                    class="contato-link instagram"
+                    title="Siga-nos no Instagram">
+                      <i class="fab fa-instagram"></i> Instagram
+                  </a>
+                  
+                  <!-- WhatsApp -->
+                  <a href="javascript:void(0);" 
+                    onclick="window.open(CONTATO.whatsapp, '_blank', 'noopener,noreferrer')"
+                    class="contato-link whatsapp"
+                    title="Envie uma mensagem no WhatsApp">
+                      <i class="fab fa-whatsapp"></i> WhatsApp
+                  </a>
+                  
+                  <!-- Email -->
+                  <a href="javascript:void(0);"
+                    onclick="window.location.href = CONTATO.email;"
+                    class="contato-link email"
+                    title="Envie um email">
+                      <i class="fas fa-envelope"></i> Email
+                  </a>
+                </div>
+                
+                <p class="disclaimer-small">
+                    Consulte sempre um nutricionista para orientação personalizada.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script>
+        // Inicialização adicional
+        document.addEventListener('DOMContentLoaded', function() {
+            // Contador de grupos
+            const gruposCount = Object.keys(dados.Grupos).length;
+            document.getElementById('grupos-count').textContent = gruposCount;
+            
+            // Botão Calcular
+            document.getElementById('calcular').addEventListener('click', buscarEquivalentes);
+            
+            // Botão Limpar
+            document.getElementById('limpar').addEventListener('click', function() {
+                document.getElementById('quantidade').value = '';
+                document.getElementById('resultado').innerHTML = 
+                    '<h3><i class="fas fa-chart-bar"></i> Resultado</h3>' +
+                    '<div class="resultado-content">' +
+                    '<p class="instrucao">Preencha os campos acima e clique em "Calcular Equivalentes"</p>' +
+                    '</div>';
+            });
+            
+            // Habilitar alimento quando grupo for selecionado
+            document.getElementById('grupo').addEventListener('change', function() {
+                const alimentoSelect = document.getElementById('alimento');
+                if (this.value) {
+                    alimentoSelect.disabled = false;
+                } else {
+                    alimentoSelect.disabled = true;
+                    alimentoSelect.innerHTML = '<option value="">Primeiro selecione um grupo</option>';
+                }
+            });
+            
+            // Permitir calcular com Enter na quantidade
+            document.getElementById('quantidade').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    buscarEquivalentes();
+                }
+            });
+            
+            // Verificar se já tem um grupo selecionado (para o caso do Feijão)
+            setTimeout(function() {
+                const grupoSelect = document.getElementById('grupo');
+                if (grupoSelect.value) {
+                    const alimentoSelect = document.getElementById('alimento');
+                    alimentoSelect.disabled = false;
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,647 @@
+/* styles/main.css */
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #2196F3;
+    --danger-color: #f44336;
+    --light-bg: #f9f9f9;
+    --card-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    --border-radius: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+}
+
+/* Estilos para o header com ícone do Instagram */
+.header-content {
+    text-align: center;
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.title-text {
+    flex: 1;
+}
+
+.title-text h1 {
+    margin-bottom: 5px; /* Reduz o espaço entre título e subtítulo */
+}
+
+.title-container .subtitle {
+    margin-top: 0;
+    color: #666;
+    font-size: 1.1em;
+}
+
+/* Ajuste para o ícone não ficar muito grande */
+.instagram-header-icon {
+    flex-shrink: 0; /* Impede que o ícone diminua */
+}
+
+.instagram-header-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+    color: white;
+    border-radius: 12px; /* <-- QUADRADO COM PONTAS ARREDONDADAS */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    font-size: 1.5em;
+}
+
+.instagram-header-icon:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+/* Para usar a variável CONTATO do JavaScript (opcional) */
+.instagram-header-icon.dinamico {
+    background: var(--instagram-gradient, linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D));
+}
+
+/* Versão alternativa menor */
+.instagram-header-icon.small {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
+    border-radius: 10px;
+}
+
+/* Versão com tooltip */
+.instagram-header-icon[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    white-space: nowrap;
+    z-index: 1000;
+    margin-top: 60px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .title-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .instagram-header-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3em;
+        order: -1; /* Coloca o ícone acima do título em mobile */
+        border-radius: 10px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .title-container {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .instagram-header-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+        border-radius: 8px;
+    }
+    
+    h1 {
+        font-size: 1.5em;
+    }
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 2.2em;
+}
+
+h1 i {
+    margin-right: 15px;
+    color: #FF9800;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1.1em;
+}
+
+/* Cards */
+.card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h2, .card h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+/* Formulário */
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+}
+
+label i {
+    margin-right: 8px;
+    color: var(--secondary-color);
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+.input-with-info {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-info input {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.info-tooltip {
+    position: absolute;
+    right: 10px;
+    color: #888;
+    cursor: help;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 14px;
+}
+
+.info-tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Botões */
+button {
+    padding: 14px 24px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button i {
+    margin-right: 8px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #3d8b40;
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: #757575;
+    color: white;
+    margin-left: 10px;
+}
+
+.btn-secondary:hover {
+    background-color: #616161;
+}
+
+/* Resultado */
+.resultado-container {
+    min-height: 200px;
+}
+
+.resultado-content {
+    margin-top: 15px;
+}
+
+.instrucao {
+    color: #888;
+    font-style: italic;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.alimento-principal {
+    background-color: #E8F5E9;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.equivalente-item {
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--secondary-color);
+    transition: background-color 0.3s;
+}
+
+.equivalente-item:hover {
+    background-color: #e9ecef;
+}
+
+.erro {
+    color: var(--danger-color);
+    background-color: #FFEBEE;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--danger-color);
+}
+
+/* Card informativo */
+.info-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.info-card h3 {
+    color: white;
+    border-bottom-color: rgba(255,255,255,0.3);
+}
+
+.info-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.info-card li {
+    padding: 8px 0;
+    padding-left: 30px;
+    position: relative;
+}
+
+.info-card li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.dica {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255,255,255,0.1);
+    border-radius: var(--border-radius);
+    font-style: italic;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.disclaimer {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #FFF3E0;
+    border-radius: var(--border-radius);
+    color: #E65100;
+    font-size: 0.85em;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+    
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .btn-secondary {
+        margin-left: 0;
+    }
+    
+    .tooltip-text {
+        width: 200px;
+        font-size: 12px;
+    }
+}
+
+/* Adicione ao seu main.css */
+.alimento-principal {
+  background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  border-left: 5px solid #4CAF50;
+}
+
+.kcal-info {
+  font-size: 1.2em;
+  margin-top: 10px;
+  color: #2E7D32;
+  font-weight: bold;
+}
+
+.equivalentes-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.equivalente-item {
+  background: white;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  border-left: 3px solid #2196F3;
+  transition: transform 0.2s;
+}
+
+.equivalente-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.medida {
+  color: #666;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+.erro {
+  background: #FFEBEE;
+  color: #C62828;
+  padding: 15px;
+  border-radius: 6px;
+  border-left: 4px solid #F44336;
+}
+
+@media (max-width: 768px) {
+  .equivalentes-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.instagram-link {
+    color: #3684cc;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    background-color: rgba(228, 64, 95, 0.1);
+}
+
+.instagram-link:hover {
+    background-color: rgba(228, 64, 95, 0.2);
+    transform: translateY(-2px);
+}
+
+.instagram-link i {
+    margin-right: 6px;
+    font-size: 1.1em;
+}
+
+.btn-instagram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-instagram:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    color: white;
+}
+
+.btn-instagram i {
+    margin-right: 8px;
+    font-size: 1.2em;
+}
+
+.contato-instagram {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Estilos para os links de contato */
+.contato-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.contato-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    min-width: 120px;
+    color: white;
+}
+
+.contato-link i {
+    margin-right: 8px;
+    font-size: 1.2em;
+}
+
+/* Instagram */
+.contato-link.instagram {
+    background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+}
+
+.contato-link.instagram:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* WhatsApp */
+.contato-link.whatsapp {
+    background: linear-gradient(45deg, #25D366, #128C7E);
+}
+
+.contato-link.whatsapp:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(18, 140, 126, 0.3);
+}
+
+/* Email */
+.contato-link.email {
+    background: linear-gradient(45deg, #EA4335, #4285F4);
+}
+
+.contato-link.email:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(66, 133, 244, 0.3);
+}
+
+/* Efeito hover geral */
+.contato-link:hover {
+    color: white;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .contato-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .contato-link {
+        width: 100%;
+        max-width: 250px;
+        padding: 12px 20px;
+    }
+}
+
+/* Ajuste no disclaimer-container */
+.disclaimer-container {
+    background-color: #FFF3E0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 15px;
+    text-align: center;
+    border-left: 4px solid #FF9800;
+}
+
+.disclaimer {
+    color: #E65100;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.disclaimer-small {
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 15px;
+    font-style: italic;
+}
+
